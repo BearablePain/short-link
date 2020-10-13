@@ -5,15 +5,9 @@ import { Link, useHistory } from 'react-router-dom';
 const Navigation = () => {
   return (
     <Nav className="navbar  navbar-dark bg-dark menu">
-      <NavItem>
-        <Link to="/">Logo</Link>{' '}
-      </NavItem>
-      <NavItem>
-        <Link to="/">Войти</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/">Зарегестрироваться</Link>
-      </NavItem>
+      <NavItem active><Link to="/">Logo</Link></NavItem>
+      <NavItem> <Link to="/">Войти</Link></NavItem>
+      <Link to="/">Зарегестрироваться</Link>
     </Nav>
   );
 };
