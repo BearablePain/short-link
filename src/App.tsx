@@ -1,9 +1,14 @@
 import React from 'react';
-import './App.css';
+import './public/App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import Navigation from './Components/Navigation';
 
 const App: React.FC = () => {
-  return <>Hello</>;
+  return (
+    <>
+      <Navigation />
+    </>
+  );
 };
 
 export default App;
