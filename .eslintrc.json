@@ -26,23 +26,34 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
+ "linebreak-style": ["error", "windows"],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
       {
         "variables": false
       }
-    ], // changes the file to CRLF
-    "import/extensions": [
-       "never"
-],
-"import/no-unresolved": [
-  { "commonjs": true, "amd": true }
-],
-"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }]
-}
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": [
+          ".tsx",
+          ".ts",
+          "never"
+        ]
+      }
+    ]
+  }
 }
