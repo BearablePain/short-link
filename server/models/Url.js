@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const urlSchema = new mongoose.Schema({
   urlCode: String,
-  longUrl: String,
+  longLink: String,
   shortUrl: String,
   date: { type: String, default: Date.now },
-  count: Number,
+  count: { type: Number, default: 0 },
 });
 
 const UrlModel = mongoose.model('Url', urlSchema);

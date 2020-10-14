@@ -12,6 +12,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
+
 app.use(
   cors({
     credentials: true,
@@ -21,11 +22,6 @@ app.use(
 );
 app.use('/', indexRouter);
 app.use('/api/url', apiUrlRoutes);
-
-
-// app.get('/', (req, res) => {
-//   res.json('Connect backend');
-// });
 
 async function start() {
   try {
