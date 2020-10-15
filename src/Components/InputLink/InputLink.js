@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { InputGroupAddon, Input, Button } from 'reactstrap';
 import { addUrl } from '../../Redux/action';
@@ -8,24 +8,9 @@ const InputLink = () => {
   const inputEl = useRef(null);
   const dispatch = useDispatch();
   const result = useSelector((state) => state.url);
-
-  const submitLink = async (url) => {
-    dispatch(addUrl(url));
-    // const longLink = url.trim();
-    // const params = {
-    //   method: 'POST',
-    //   body: JSON.stringify({ longLink }),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Accept: 'application/json',
-    //   },
-    // };
-    // const responce = await fetch('api/url/shorten', params);
-    // const result = await responce.json();
-    inputEl.current.value = result.shortUrl;
-    inputEl.current.focus();
+  useEffect(() => {
     setValueInput(result.shortUrl);
-  };
+  }, [result]);
 
   return (
     <div>
@@ -45,7 +30,7 @@ const InputLink = () => {
         <Button
           color="secondary"
           onClick={() => {
-            submitLink(valueInput);
+            dispatch(addUrl(valueInput));
           }}
         >
           Сократить
