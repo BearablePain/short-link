@@ -10,9 +10,9 @@ router.get('/:code', async (req, res) => {
   console.log(req.params, 'params');
   try {
     const url = await Url.findOne({ urlCode: req.params.code });
-    console.log(url)
+    console.log(url);
     if (url) {
-      console.log('tyt')
+      console.log('tyt');
       url.count += 1;
       url.save();
       return res.redirect(url.longLink);

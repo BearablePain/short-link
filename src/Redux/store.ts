@@ -3,10 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
+import { interfaceStore } from '../interface';
 
 //  формирование хранилища
 
-const initialStore = { dataUrl: [], url: {} };
+export const initialStore: interfaceStore = { url: {}, dataUrl: [] };
+
 const middleware = [thunk, logger];
 const store = createStore(
   reducer,

@@ -2,10 +2,11 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ListUrl from '../Components/ListUrl/ListUrl';
 import { getUrlLists } from '../Redux/action';
+import { interfaceStore, interfaceListUrl } from '../interface';
 
 const ListUrlContainer = () => {
-  const [data, setData] = useState([]);
-  const dataUrl = useSelector((state) => state.dataUrl);
+  // const [data, setData] = useState<interfaceListUrl>([]);
+  const dataUrl = useSelector((state: interfaceStore) => state.dataUrl);
 
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const ListUrlContainer = () => {
   // }, [dispatch]);
   const memoizedCallback = useCallback(() => {
     dispatch(getUrlLists());
-    setData(dataUrl);
+    // setData(dataUrl);
   }, [dataUrl]);
   useEffect(() => {
     // if (data.length < dataUrl.length && data.length === 0) {
@@ -27,11 +28,7 @@ const ListUrlContainer = () => {
     // }
   }, [dispatch]);
 
-  return (
-    <>
-      <ListUrl dataUrl={dataUrl.reverse()} />
-    </>
-  );
+  return <>{dataUrl && <ListUrl dataUrl={dataUrl.reverse()} />}</>;
 };
 
 export default ListUrlContainer;

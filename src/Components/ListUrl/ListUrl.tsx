@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Table } from 'reactstrap';
-import { interfaceListUrl, interfaceUrlObject } from '../../interfasec';
+import { interfaceListUrl, interfaceUrlObject } from '../../interface';
 
 const ListUrl = (props: interfaceListUrl) => {
   console.log(props);
@@ -30,11 +30,13 @@ const ListUrl = (props: interfaceListUrl) => {
                   <th scope="row" key={el._id}>
                     {i + 1}
                   </th>
-                  <td style={{ width: '20%', wordWrap: 'break-word' }}>
-                    {el.longLink.length >= 300
-                      ? `${el.longLink.slice(0, 300)}...`
-                      : el.longLink}
-                  </td>
+                  {el.longLink && (
+                    <td style={{ width: '20%', wordWrap: 'break-word' }}>
+                      {el.longLink.length >= 300
+                        ? `${el.longLink.slice(0, 300)}...`
+                        : el.longLink}
+                    </td>
+                  )}
                   <td>{el.shortUrl}</td>
                   <td>{el.count}</td>
                 </tr>

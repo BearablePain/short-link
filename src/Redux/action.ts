@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import { GET_URLS_LIST, FETCH_FAILED, ADD_URL } from './actionTypes';
 
 /**
@@ -5,7 +6,7 @@ import { GET_URLS_LIST, FETCH_FAILED, ADD_URL } from './actionTypes';
  * @return {type: string, payload: [{},...]} .
  */
 
-export const getUrlLists = () => async (dispatch) => {
+export const getUrlLists = () => async (dispatch: Dispatch) => {
   const responce = await fetch('api/url/list');
   const result = await responce.json();
   try {
@@ -25,7 +26,7 @@ export const getUrlLists = () => async (dispatch) => {
  * @return {type: string, payload: {}} .
  */
 
-export const addUrl = (url) => async (dispatch) => {
+export const addUrl = (url: string) => async (dispatch: Dispatch) => {
   const longLink = url.trim(); //  удалить пробелы
   const params = {
     method: 'POST',
@@ -35,6 +36,7 @@ export const addUrl = (url) => async (dispatch) => {
       Accept: 'application/json',
     },
   };
+
   const responce = await fetch('api/url/shorten', params);
   const result = await responce.json();
   try {
@@ -47,20 +49,3 @@ export const addUrl = (url) => async (dispatch) => {
     return dispatch({ type: FETCH_FAILED, message: error });
   }
 };
-
-// const submitLink = async (url) => {
-//   const longLink = url.trim();
-//   const params = {
-//     method: 'POST',
-//     body: JSON.stringify({ longLink }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Accept: 'application/json',
-//     },
-//   };
-//   const responce = await fetch('api/url/shorten', params);
-//   const result = await responce.json();
-//   inputEl.current.value = result.shortUrl;
-//   inputEl.current.focus();
-//   setValueInput(result.shortUrl);
-// };

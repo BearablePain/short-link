@@ -1,6 +1,6 @@
-import { GET_URLS_LIST, ADD_URL } from './actionTypes';
+import { GET_URLS_LIST, ADD_URL, InterfaceUrlActionTypes } from './actionTypes';
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: InterfaceUrlActionTypes) => {
   switch (action.type) {
     case GET_URLS_LIST:
       return {

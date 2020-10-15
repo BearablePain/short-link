@@ -1,15 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { InputGroupAddon, Input, Button } from 'reactstrap';
+import { interfaceStore } from '../../interface';
 import { addUrl } from '../../Redux/action';
 
 const InputLink = () => {
-  const [valueInput, setValueInput] = useState('');
+  const [valueInput, setValueInput] = useState<string | undefined>('');
   const inputEl = useRef(null);
   const dispatch = useDispatch();
-  const result = useSelector((state) => state.url);
+  const result = useSelector((state: interfaceStore) => state.url);
+
   useEffect(() => {
-    setValueInput(result.shortUrl);
+    if (result !== undefined) {
+      setValueInput(result.shortUrl);
+    }
   }, [result]);
 
   return (
@@ -30,7 +34,7 @@ const InputLink = () => {
         <Button
           color="secondary"
           onClick={() => {
-            dispatch(addUrl(valueInput));
+            valueInput && dispatch(addUrl(valueInput));
           }}
         >
           Сократить
