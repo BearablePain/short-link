@@ -33,7 +33,7 @@ const Navigation = () => {
             getContent('reg');
           }}
         >
-          <NavLink>Зарегестрироваться</NavLink>
+          <NavLink>Зарегситрироваться</NavLink>
         </NavItem>
       </Nav>
       <Modals toggle={toggle} modal={modal} modalContent={modalContent} />

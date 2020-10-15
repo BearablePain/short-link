@@ -10,9 +10,7 @@ import Url from '../models/Url.js';
 // @route     POST /api/url/shorten
 // @desc      Create short URL
 router.post('/shorten', async (req, res) => {
-  console.log(
-    'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-  );
+  console.log('shorten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   console.log(req.body);
   const { longLink } = req.body;
   // const baseUrl = config.get('baseUrl');
@@ -53,6 +51,13 @@ router.post('/shorten', async (req, res) => {
   } else {
     res.status(401).json({ shortUrl: 'Invalid long url' });
   }
+});
+
+router.get('/list', async (req, res) => {
+  console.log('List!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  const urls = await Url.find();
+  console.log(urls);
+  return res.json(urls);
 });
 
 export default router;

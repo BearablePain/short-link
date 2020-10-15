@@ -1,21 +1,27 @@
 import React, { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { InputGroupAddon, Input, Button } from 'reactstrap';
+import { addUrl } from '../../Redux/action';
 
 const InputLink = () => {
   const [valueInput, setValueInput] = useState('');
   const inputEl = useRef(null);
+  const dispatch = useDispatch();
+  const result = useSelector((state) => state.url);
 
-  const submitLink = async (longLink) => {
-    const params = {
-      method: 'POST',
-      body: JSON.stringify({ longLink }),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    };
-    const responce = await fetch('api/url/shorten', params);
-    const result = await responce.json();
+  const submitLink = async (url) => {
+    dispatch(addUrl(url));
+    // const longLink = url.trim();
+    // const params = {
+    //   method: 'POST',
+    //   body: JSON.stringify({ longLink }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json',
+    //   },
+    // };
+    // const responce = await fetch('api/url/shorten', params);
+    // const result = await responce.json();
     inputEl.current.value = result.shortUrl;
     inputEl.current.focus();
     setValueInput(result.shortUrl);

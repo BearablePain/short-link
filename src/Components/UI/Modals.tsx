@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 
 import Auth from '../Auth/Auth';
-import Registration from '../Regustration/Registration';
+import Registration from '../Registration/Registration';
 
 interface Props {
   modal: boolean;
