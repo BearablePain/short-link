@@ -12,7 +12,10 @@ const Navigation = () => {
 
   return (
     <>
-      <Nav className="navbar  navbar-dark bg-dark menu">
+      <Nav
+        className="navbar  navbar-dark bg-dark menu"
+        style={{ justifyContent: 'flex-end' }}
+      >
         <NavItem active>
           <Link to="/">Logo</Link>
         </NavItem>

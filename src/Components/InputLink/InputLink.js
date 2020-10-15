@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { InputGroupAddon, Input, Button } from 'reactstrap';
-import useInput from '../../hooks/useInput';
-// 4b91b6bbc4e44dd0a94b37f648edc49b
 
 const InputLink = () => {
-  const [valueInput, setValueInput] = useInput({
-    longLink: '',
-  });
+  const [valueInput, setValueInput] = useState('');
+  const inputEl = useRef(null);
 
-  const submitLink = async (url) => {
+  const submitLink = async (longLink) => {
     const params = {
       method: 'POST',
-      body: JSON.stringify(url),
+      body: JSON.stringify({ longLink }),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -19,8 +16,11 @@ const InputLink = () => {
     };
     const responce = await fetch('api/url/shorten', params);
     const result = await responce.json();
-    console.log(result);
+    inputEl.current.value = result.shortUrl;
+    inputEl.current.focus();
+    setValueInput(result.shortUrl);
   };
+
   return (
     <div>
       <InputGroupAddon
@@ -28,13 +28,20 @@ const InputLink = () => {
         style={{ justifyContent: 'center', padding: '20px' }}
       >
         <Input
+          autoFocus
           bsSize="lg"
           style={{ width: '60%' }}
           name="longLink"
-          value={valueInput.longLink}
-          onChange={setValueInput}
+          value={valueInput}
+          onChange={(e) => setValueInput(e.target.value)}
+          ref={inputEl}
         />
-        <Button color="secondary" onClick={() => submitLink(valueInput)}>
+        <Button
+          color="secondary"
+          onClick={() => {
+            submitLink(valueInput);
+          }}
+        >
           Сократить
         </Button>
       </InputGroupAddon>

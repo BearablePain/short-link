@@ -5,8 +5,8 @@ const useInputs = (values) => {
   const setInput = (e) => {
     const fieldName = e.target.name;
     const { value } = e.target;
-    setState((state) => ({
-      ...state,
+    setState((newState) => ({
+      ...newState,
       [fieldName]: value,
     }));
   };
@@ -14,7 +14,6 @@ const useInputs = (values) => {
 };
 
 export default useInputs;
-
 
 // export const submit = async (obj, method) => {
 //   const _API_KEY = 'AIzaSyATSj6YwarLnzR7NFPKLyRV_WfE_kkGDWM';
