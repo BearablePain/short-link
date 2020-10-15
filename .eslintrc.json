@@ -48,13 +48,23 @@
     "import/no-unresolved": [
       2,
       {
-        "ignore": [
+        "extensions": [
           ".tsx",
           ".ts",
-          ".js",
-          "never"
+          ".js"
+          
         ]
       }
-    ]
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
   }
 }

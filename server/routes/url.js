@@ -10,8 +10,6 @@ import Url from '../models/Url.js';
 // @route     POST /api/url/shorten
 // @desc      Create short URL
 router.post('/shorten', async (req, res) => {
-  console.log('shorten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.log(req.body);
   const { longLink } = req.body;
   // const baseUrl = config.get('baseUrl');
   const baseUrl = 'http://localhost:4000';
@@ -39,13 +37,11 @@ router.post('/shorten', async (req, res) => {
           date: new Date(),
           count: 0,
         });
-        console.log('Url создан', url);
         await url.save();
 
         res.json(url);
       }
     } catch (err) {
-      console.error(err);
       res.status(500).json('Server error');
     }
   } else {

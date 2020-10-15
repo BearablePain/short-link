@@ -7,12 +7,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:code', async (req, res) => {
-  console.log(req.params, 'params');
   try {
     const url = await Url.findOne({ urlCode: req.params.code });
-    console.log(url);
     if (url) {
-      console.log('tyt');
       url.count += 1;
       url.save();
       return res.redirect(url.longLink);

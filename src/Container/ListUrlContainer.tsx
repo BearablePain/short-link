@@ -5,28 +5,16 @@ import { getUrlLists } from '../Redux/action';
 import { interfaceStore, interfaceListUrl } from '../interface';
 
 const ListUrlContainer = () => {
-  // const [data, setData] = useState<interfaceListUrl>([]);
   const dataUrl = useSelector((state: interfaceStore) => state.dataUrl);
-
+  const url = useSelector((state: interfaceStore) => state.url);
   const dispatch = useDispatch();
-
+ 
   // Загрузка данных в стор при внедрении этого компонента
-
-  // useEffect(() => {
-  //   // if (data.length < dataUrl.length && data.length === 0) {
-  //   dispatch(getUrlLists());
-  //   setData(dataUrl)
-  //   // }
-  // }, [dispatch]);
-  const memoizedCallback = useCallback(() => {
-    dispatch(getUrlLists());
-    // setData(dataUrl);
-  }, [dataUrl]);
+  
   useEffect(() => {
-    // if (data.length < dataUrl.length && data.length === 0) {
-    memoizedCallback();
-    // }
-  }, [dispatch]);
+    dispatch(getUrlLists());
+  }, [dispatch, url]);
+
 
   return <>{dataUrl && <ListUrl dataUrl={dataUrl.reverse()} />}</>;
 };
