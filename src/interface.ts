@@ -1,5 +1,5 @@
 export interface interfaceUrlObject {
-  _id?: number;
+  _id?: string;
   longLink?: string;
   shortUrl?: string;
   urlCode?: string;

@@ -39,6 +39,7 @@ export const addUrl = (url: string) => async (dispatch: Dispatch) => {
 
   const responce = await fetch('api/url/shorten', params);
   const result = await responce.json();
+  console.log(typeof result._id)
   try {
     return dispatch({
       type: ADD_URL,
