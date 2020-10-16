@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/extensions */
 /* eslint-disable import/first */
 import validUrl from 'valid-url';
@@ -8,8 +9,8 @@ import Url from '../models/Url.js';
 
 const router = express.Router();
 
-//      POST /api/url/shorten
-//       Create short URL
+// POST /api/url/shorten
+// Create short URL
 
 router.post('/shorten', async (req, res) => {
   const { longLink } = req.body;
@@ -17,7 +18,7 @@ router.post('/shorten', async (req, res) => {
 
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
-    return res.status(401).json({ shortUrl: 'Invalid long url' });
+    return res.status(401).json({ shortUrl: 'Invalid url' });
   }
   // Create url code
   const urlCode = shortid.generate();
@@ -32,6 +33,7 @@ router.post('/shorten', async (req, res) => {
         res.json(url);
       } else {
         const shortUrl = `${baseUrl}/${urlCode}`;
+
         url = new Url({
           longLink,
           shortUrl,
@@ -47,7 +49,7 @@ router.post('/shorten', async (req, res) => {
       res.status(500).json('Server error');
     }
   } else {
-    res.status(401).json({ shortUrl: 'Invalid long url' });
+    res.status(401).json({ shortUrl: 'Invalid url' });
   }
 });
 
@@ -56,7 +58,8 @@ router.post('/shorten', async (req, res) => {
 
 router.get('/list', async (req, res) => {
   try {
-    const urls = await Url.find();
+    let urls = await Url.find();
+    urls = urls.reverse();
     return res.json(urls);
   } catch (error) {
     res.status(500).json('Server error');

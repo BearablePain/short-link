@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
 /* eslint-disable import/extensions */
 import express from 'express';
 import Url from '../models/Url.js';
@@ -7,8 +9,8 @@ router.get('/', (req, res) => {
   res.json('Connect backend');
 });
 
-//      GET /:code
-//       redirects to original URL
+// GET /:code
+// redirects to original URL
 
 router.get('/:code', async (req, res) => {
   try {

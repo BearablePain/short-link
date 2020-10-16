@@ -20,7 +20,7 @@ const ListUrlContainer = () => {
   if (!dataUrl) {
     return <>Loading...</>;
   }
-  return <><ListUrl dataUrl={dataUrl.reverse()} /></>;
+  return <><ListUrl dataUrl={dataUrl} /></>;
 };
 
 export default ListUrlContainer;

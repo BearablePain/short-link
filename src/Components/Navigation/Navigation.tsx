@@ -18,8 +18,8 @@ const Navigation = () => {
         className="navbar  navbar-dark bg-dark menu"
         style={{ justifyContent: 'flex-end' }}
       >
-        <NavItem active>
-          <Link to="/">Logo</Link>
+        <NavItem>
+          <Link to="/stats">MyStats</Link>
         </NavItem>
         <NavItem
           onClick={() => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import { Dispatch } from 'redux';
@@ -29,7 +30,7 @@ export const getUrlLists = () => async (dispatch: Dispatch) => {
  */
 
 export const addUrl = (url: string) => async (dispatch: Dispatch) => {
-  const longLink = url.trim(); //  удалить пробелы
+  const longLink = url ? url.trim() : ''; // удалить пробелы
   const params = {
     method: 'POST',
     body: JSON.stringify({ longLink }),
