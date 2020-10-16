@@ -1,5 +1,5 @@
-start: npm i =>  npm run server
-в бразуере доступно по ссылке http://localhost:3000/
+start: npm i =>  npm run server /n
+В бразуере будет доступно по ссылке http://localhost:3000/
 
 Основная задача:
 
