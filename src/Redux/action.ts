@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import { Dispatch } from 'redux';
 import { GET_URLS_LIST, FETCH_FAILED, ADD_URL } from './actionTypes';
 
@@ -39,7 +41,6 @@ export const addUrl = (url: string) => async (dispatch: Dispatch) => {
 
   const responce = await fetch('api/url/shorten', params);
   const result = await responce.json();
-  console.log(typeof result._id)
   try {
     return dispatch({
       type: ADD_URL,

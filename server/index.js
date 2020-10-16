@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import express from 'express';
 // import path  from  'path';
 import morgan from 'morgan';
@@ -18,7 +19,7 @@ app.use(
     credentials: true,
     origin: ['http://localhost:3000'],
     optionsSuccessStatus: 200,
-  })
+  }),
 );
 app.use('/', indexRouter);
 app.use('/api/url', apiUrlRoutes);

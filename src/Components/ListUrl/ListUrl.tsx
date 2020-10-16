@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Container, Table } from 'reactstrap';
 import { interfaceListUrl, interfaceUrlObject } from '../../interface';
@@ -26,6 +28,7 @@ const ListUrl = (props: interfaceListUrl) => {
         </thead>
         <tbody>
           {props.dataUrl.map((el: interfaceUrlObject, i) => (
+            // eslint-disable-next-line no-underscore-dangle
             <tr key={el._id}>
               <th scope="row">{i + 1}</th>
               {el.longLink && (

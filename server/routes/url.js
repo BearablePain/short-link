@@ -1,17 +1,18 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/first */
 import validUrl from 'valid-url';
 import shortid from 'shortid';
-import config from 'config';
 import express from 'express';
-
-const router = express.Router();
 
 import Url from '../models/Url.js';
 
-// @route     POST /api/url/shorten
-// @desc      Create short URL
+const router = express.Router();
+
+//      POST /api/url/shorten
+//       Create short URL
+
 router.post('/shorten', async (req, res) => {
   const { longLink } = req.body;
-  // const baseUrl = config.get('baseUrl');
   const baseUrl = 'http://localhost:4000';
 
   // Check base url
@@ -22,6 +23,7 @@ router.post('/shorten', async (req, res) => {
   const urlCode = shortid.generate();
 
   // Check long url
+
   if (validUrl.isUri(longLink)) {
     try {
       let url = await Url.findOne({ longLink });
@@ -48,6 +50,9 @@ router.post('/shorten', async (req, res) => {
     res.status(401).json({ shortUrl: 'Invalid long url' });
   }
 });
+
+//      GET /api/url/list
+//       Load all URLs
 
 router.get('/list', async (req, res) => {
   try {

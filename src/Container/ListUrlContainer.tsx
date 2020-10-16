@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ListUrl from '../Components/ListUrl/ListUrl';

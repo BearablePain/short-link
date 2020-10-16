@@ -29,6 +29,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.15",
+    "ts-node": "^9.0.0",
     "valid-url": "^1.0.9"
   },
   "scripts": {

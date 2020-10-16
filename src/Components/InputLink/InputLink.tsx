@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { InputGroupAddon, Input, Button } from 'reactstrap';
@@ -34,6 +36,7 @@ const InputLink = () => {
         <Button
           color="secondary"
           onClick={() => {
+            // eslint-disable-next-line no-unused-expressions
             valueInput && dispatch(addUrl(valueInput));
           }}
         >

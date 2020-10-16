@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
@@ -11,7 +13,6 @@ interface Props {
   modalContent?: string;
   toggle: () => void;
 }
-
 const Modals = (props: Props) => (
   <div>
     <Modal isOpen={props.modal} toggle={props.toggle}>
