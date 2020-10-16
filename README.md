@@ -1,44 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+start: npm i => В консоли 'npm run server'
 
-## Available Scripts
+Основная задача:
 
-In the project directory, you can run:
+Реализовать сервис "укорачивания" ссылок (aka goo.gl, bitly.com). Другими словами, реализовать серверную часть, UI пользователя и спроектировать структуру БД (если БД нужна).
 
-### `npm start`
+Детали задачи:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Если 2 пользователя вводят ссылку "https://www.google.com/" в форме ввода, то оба получают один и тот же вариант короткой ссылки
+По определённому адресу (например, "http://my-server/stats") должна быть доступна статистика:
+id короткой ссылки
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+оригинальный адрес
 
-### `npm test`
+кол-во переходов по короткой ссылке
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+jADJip
 
-### `npm run build`
+https://google.com
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+10
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+vzGMrl
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://ya.ru
 
-### `npm run eject`
+1
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Для улучшения отображения пользовательского UI можно взять любой CSS Framework.
+ 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Будет плюсом:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+если код покрыт unit-тестами (jest/jasmine и другие)
+реализовать SPA вместо статических html страниц (API + SPA)
+реализовать консольную утилиту, которая будет работать с API (предыдущий пункт) и выполнять функции UI (детали задачи, пункт 2)
