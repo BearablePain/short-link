@@ -50,10 +50,12 @@ router.post('/shorten', async (req, res) => {
 });
 
 router.get('/list', async (req, res) => {
-  console.log('List!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  const urls = await Url.find();
-  console.log(urls);
-  return res.json(urls);
+  try {
+    const urls = await Url.find();
+    return res.json(urls);
+  } catch (error) {
+    res.status(500).json('Server error');
+  }
 });
 
 export default router;
