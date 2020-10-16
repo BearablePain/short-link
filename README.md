@@ -1,4 +1,4 @@
-start: npm i => В консоли 'npm run server'
+start: npm i =>  npm run server
 
 Основная задача:
 
