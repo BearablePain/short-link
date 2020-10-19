@@ -6,12 +6,13 @@ import shortid from 'shortid';
 import express from 'express';
 
 import Url from '../models/Url.js';
+import checkUrl from '../middleware/checkUrl.js';
 
 const router = express.Router();
 
 // Создает короткий URL
 
-router.post('/shorten', async (req, res) => {
+router.post('/shorten', checkUrl, async (req, res) => {
   const { longLink } = req.body;
   const baseUrl = 'http://localhost:4000';
 
@@ -21,32 +22,26 @@ router.post('/shorten', async (req, res) => {
   // Создает code
   const urlCode = shortid.generate();
 
-  // Проверяет введенный пользователем URL 
+  try {
+    let url = await Url.findOne({ longLink });
 
-  if (validUrl.isUri(longLink)) {
-    try {
-      let url = await Url.findOne({ longLink });
+    if (url) {
+      res.json(url);
+    } else {
+      const shortUrl = `${baseUrl}/${urlCode}`;
+      url = new Url({
+        longLink,
+        shortUrl,
+        urlCode,
+        date: new Date(),
+        count: 0,
+      });
+      await url.save();
 
-      if (url) {
-        res.json(url);
-      } else {
-        const shortUrl = `${baseUrl}/${urlCode}`;
-        url = new Url({
-          longLink,
-          shortUrl,
-          urlCode,
-          date: new Date(),
-          count: 0,
-        });
-        await url.save();
-
-        res.json(url);
-      }
-    } catch (err) {
-      res.status(500).json('Server error');
+      res.json(url);
     }
-  } else {
-    res.status(401).json({ shortUrl: 'Invalid url' });
+  } catch (err) {
+    res.status(500).json('Server error');
   }
 });
 

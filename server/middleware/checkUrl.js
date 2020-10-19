@@ -1,10 +1,12 @@
 import validUrl from 'valid-url';
 
+// Проверяет введенный пользователем URL
+
 const checkUrl = (req, res, next) => {
   const { longLink } = req.body;
-  if (!validUrl.isUri(baseUrl)) {
+  if (!validUrl.isUri(longLink)) {
+    res.status(401).json({ shortUrl: 'Invalid url' });
   }
-  res.send('check');
   next();
 };
 
