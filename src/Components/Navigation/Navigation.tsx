@@ -22,6 +22,7 @@ const Navigation = () => {
           <Link to="/stats">MyStats</Link>
         </NavItem>
         <NavItem
+          style={{ cursor: 'pointer' }}
           onClick={() => {
             toggle();
             getContent('auth');
@@ -30,6 +31,7 @@ const Navigation = () => {
           <NavLink>Войти</NavLink>
         </NavItem>
         <NavItem
+          style={{ cursor: 'pointer' }}
           onClick={() => {
             toggle();
             getContent('reg');

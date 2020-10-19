@@ -1,7 +1,5 @@
 import validUrl from 'valid-url';
 
-// eslint-disable-next-line consistent-return
-
 // Проверяет введенный пользователем URL
 
 const checkUrl = (req, res, next) => {
