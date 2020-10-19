@@ -13,6 +13,7 @@ interface Props {
   modalContent?: string;
   toggle: () => void;
 }
+
 const Modals = (props: Props) => (
   <div>
     <Modal isOpen={props.modal} toggle={props.toggle}>
