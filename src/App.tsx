@@ -1,3 +1,6 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import React from 'react';
 import './public/App.css';

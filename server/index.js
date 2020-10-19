@@ -11,6 +11,7 @@ import connectDB from './db/connect.js';
 const PORT = process.env.PORT || '4000';
 
 const app = express();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
@@ -22,6 +23,7 @@ app.use(
     optionsSuccessStatus: 200,
   }),
 );
+
 app.use('/', indexRouter);
 app.use('/api/url', apiUrlRoutes);
 

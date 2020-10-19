@@ -29,10 +29,10 @@ const InputLink = () => {
     }
   }, [result]);
 
-  // Отслеживаем кнопку копирования, если нажал то меняем надпись на 'скопированно' на 1.5 секунды
+  // Отслеживаем кнопку копирования, если нажал то меняем надпись на 'скопированно' на 1.2 секунды
   useEffect(() => {
     if (activeButtonCopy) {
-      setTimeout(() => setActiveButtonCopy((state) => state === false), 1500);
+      setTimeout(() => setActiveButtonCopy((state) => state === false), 1200);
     }
   }, [activeButtonCopy]);
 

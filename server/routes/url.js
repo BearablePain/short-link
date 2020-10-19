@@ -9,21 +9,19 @@ import Url from '../models/Url.js';
 
 const router = express.Router();
 
-// POST /api/url/shorten
-// Create short URL
+// Создает короткий URL
 
 router.post('/shorten', async (req, res) => {
   const { longLink } = req.body;
   const baseUrl = 'http://localhost:4000';
 
-  // Check base url
   if (!validUrl.isUri(baseUrl)) {
     return res.status(401).json({ shortUrl: 'Invalid url' });
   }
-  // Create url code
+  // Создает code
   const urlCode = shortid.generate();
 
-  // Check long url
+  // Проверяет введенный пользователем URL 
 
   if (validUrl.isUri(longLink)) {
     try {
@@ -33,7 +31,6 @@ router.post('/shorten', async (req, res) => {
         res.json(url);
       } else {
         const shortUrl = `${baseUrl}/${urlCode}`;
-
         url = new Url({
           longLink,
           shortUrl,

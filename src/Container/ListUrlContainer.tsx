@@ -11,8 +11,6 @@ const ListUrlContainer = () => {
   const url = useSelector((state: interfaceStore) => state.url);
   const dispatch = useDispatch();
 
-  // Загрузка данных в стор при внедрении этого компонента
-
   useEffect(() => {
     dispatch(getUrlLists());
   }, [dispatch, url]);
@@ -20,7 +18,11 @@ const ListUrlContainer = () => {
   if (!dataUrl) {
     return <>Loading...</>;
   }
-  return <><ListUrl dataUrl={dataUrl} /></>;
+  return (
+    <>
+      <ListUrl dataUrl={dataUrl} />
+    </>
+  );
 };
 
 export default ListUrlContainer;

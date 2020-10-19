@@ -9,8 +9,7 @@ router.get('/', (req, res) => {
   res.json('Connect backend');
 });
 
-// GET /:code
-// redirects to original URL
+// Перенаправляет на оригинальеый юрл
 
 router.get('/:code', async (req, res) => {
   try {
